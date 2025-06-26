@@ -64,7 +64,7 @@ alias ec='emacsclient --tty'
 
 # customize prompt
 setopt PROMPT_SUBST
-PROMPT='%F{yellow}%~%f%F{215}${vcs_info_msg_0_}%f %F{248}$%f '
+PROMPT='%F{242}%~%f%F{215}${vcs_info_msg_0_}%f %F{252}$%f '
 
 # sets newline after each command prompt and vcs infos
 precmd() {
