@@ -14,6 +14,11 @@ autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 compinit
 
+# init vcs informations and style it
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:git*' formats " %b%m%u%c"
+
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
@@ -56,16 +61,15 @@ bindkey "^[[B" down-line-or-beginning-search
 # add alias and extend path
 alias dots='/usr/bin/git --git-dir=$HOME/.dots/ --work-tree=$HOME'
 alias ec='emacsclient --tty'
-alias togmux='[ "$(supergfxctl -g)" = "Hybrid" ] && supergfxctl -m Integrated || supergfxctl -m Hybrid;xfce4-session-logout --logout'
 
-# enable starship
-eval "$(starship init zsh)"
+# customize prompt
+setopt PROMPT_SUBST
+PROMPT='%F{yellow}%~%f%F{215}${vcs_info_msg_0_}%f %F{248}$%f '
 
-# sets newline after each command prompt
+# sets newline after each command prompt and vcs infos
 precmd() {
-  precmd() {
+    vcs_info
     echo
-  }
 }
 
 fastfetch
