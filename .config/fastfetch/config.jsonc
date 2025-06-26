@@ -18,21 +18,11 @@
         "uptime",
         "packages",
         "shell",
-        {
-            "type": "display",
-            "compactType": "original",
-            "key": "Resolution"
-        },
         "de",
         "wm",
-        "wmtheme",
         "theme",
         "icons",
         "terminal",
-        {
-            "type": "terminalfont",
-            "format": "{/name}{-}{/}{name}{?size} {size}{?}"
-        },
         "cpu",
         {
             "type": "gpu",
