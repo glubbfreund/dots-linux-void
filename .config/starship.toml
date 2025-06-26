@@ -1,0 +1,49 @@
+add_newline = false
+
+format = """
+$character\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
+$python"""
+
+[directory]
+style = "white"
+read_only = "!"
+
+[line_break]
+disabled = true
+
+[character]
+success_symbol = "[#](white) "
+error_symbol = "[#](red) "
+
+[git_branch]
+format = "[$branch]($style)"
+style = "bright-black"
+
+[git_status]
+format = "[[($conflicted$untracked$modified$staged$renamed$deleted)]($style)($ahead_behind$stashed)]($style) "
+style = "bright-black"
+conflicted = "!"
+untracked = "+"
+modified = "~"
+staged = "*"
+renamed = "~"
+deleted = "x"
+stashed = "≡"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+
+[python]
+format = "[$virtualenv]($style) "
+style = "bright-black"
