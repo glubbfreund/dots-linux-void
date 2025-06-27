@@ -47,10 +47,19 @@ zle_highlight=('paste:none')
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+
 # remove underline also for sudo precommand
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=green,bold'
 
-# add addons (as debian package) and enable starship
+# add addons automatically if not present
+[ -d "/usr/share/zsh-syntax-highlighting" ] ||
+    sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting /usr/share/zsh-syntax-highlighting
+[ -d "/usr/share/zsh-autosuggestions" ] ||
+    sudo git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/zsh-autosuggestions
+[ -d "/usr/share/zsh-z" ] ||
+    sudo git clone https://github.com/agkozak/zsh-z /usr/share/zsh-z
+
+# source the addons
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-z/zsh-z.plugin.zsh
