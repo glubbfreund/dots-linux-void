@@ -1,4 +1,4 @@
 #!/bin/bash
 # ~/.local/bin/gpu_hyb
 
-[ "$(supergfxctl -g)" = "AsusMuxDgpu" ] && yad --text="Auf Hybridmodus umschalten und neu starten?" && supergfxctl -m Hybrid && xfce4-session-logout --reboot || ([ "$(supergfxctl -g)" != "AsusMuxDgpu" ] && supergfxctl -m Hybrid && xfce4-session-logout --logout)
+[ "$(supergfxctl -g)" = "AsusMuxDgpu" ] && yad --text="Auf Hybridmodus umschalten und neu starten?" && supergfxctl -m Hybrid && xfce4-session-logout --reboot ||  [ $(supergfxctl -g) != "Hybrid" ] && yad --text="Auf Hybridmodus GPU umschalten?" && ([ "$(supergfxctl -g)" != "AsusMuxDgpu" ] && supergfxctl -m Hybrid && xfce4-session-logout --logout)

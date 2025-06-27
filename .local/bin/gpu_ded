@@ -1,4 +1,4 @@
 #!/bin/bash
 # ~/.local/bin/gpu_ded
 
-yad --text="Auf Nvidia Umschalten und neu starten?" && supergfxctl -m AsusMuxDgpu && xfce4-session-logout --reboot
+[ $(supergfxctl -g) != "AsusMuxDgpu" ] && yad --text="Auf Nvidia Umschalten und neu starten?" && supergfxctl -m AsusMuxDgpu && xfce4-session-logout --reboot
