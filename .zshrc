@@ -22,16 +22,17 @@ zstyle ':vcs_info:git*' formats " %b%m%u%c"
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
+# needed for LS_COLORS to work later on
+eval "$(dircolors -b)"
+
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*' menu select=2
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
-zstyle ':completion:*' menu select=long
+zstyle ':completion:*' menu select=2
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
@@ -63,6 +64,7 @@ bindkey "$key[Down]" down-line-or-beginning-search
 # add alias and extend path
 alias dots='/usr/bin/git --git-dir=$HOME/.dots/ --work-tree=$HOME'
 alias ec='emacsclient --tty'
+alias ls='ls --color=auto'
 
 # customize prompt
 setopt PROMPT_SUBST
