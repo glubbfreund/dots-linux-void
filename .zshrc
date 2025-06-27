@@ -13,7 +13,6 @@ autoload -Uz compinit
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 compinit
-compdef _git git
 
 # init vcs informations and style it
 autoload -Uz vcs_info
