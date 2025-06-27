@@ -1,0 +1,4 @@
+#!/bin/bash
+# ~/.local/bin/gpu_integ
+
+yad --text="Auf Nvidia Umschalten und neu starten?" && supergfxctl -m AsusMuxDgpu && xfce4-session-logout --reboot
