@@ -14,3 +14,4 @@
 6) check connection with ssh -T git@github.com
 7) go to the specific repo and make git remote remove origin
 8) then git remote add github git@github.com:user/repository.git
+9) Git config—global user.name "Your Name" && Git config—global user.email "you@example.com"
