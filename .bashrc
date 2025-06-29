@@ -47,6 +47,11 @@ bind '"\e[Z": menu-complete-backward'
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
+# Shortcut for change dir
+shopt -s autocd
+# allows access to all items with **
+shopt -s globstar
+
 # load git completions prompt modules only if installed
 if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
     source /usr/share/git-core/contrib/completion/git-prompt.sh
@@ -82,3 +87,6 @@ update_prompt() {
 
 # run for every prompt
 PROMPT_COMMAND=update_prompt
+
+# run fastfetch on startup
+fastfetch
