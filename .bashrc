@@ -29,6 +29,7 @@ unset rc
 #
 
 # Alias section
+alias ..="cd .."
 alias ec="emacsclient --tty"
 alias ecc="emacsclient -c"
 alias dots='/usr/bin/git --git-dir=$HOME/.dots/ --work-tree=$HOME'
@@ -51,6 +52,10 @@ bind '"\e[B": history-search-forward'
 shopt -s autocd
 # allows access to all items with **
 shopt -s globstar
+# enable dir spell help
+shopt -s dirspell
+# replace vars
+shopt -s direxpand
 
 # load git completions prompt modules only if installed
 if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
