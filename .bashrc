@@ -1,5 +1,8 @@
 # .bashrc
 
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
@@ -27,6 +30,13 @@ unset rc
 #
 ## My Customizations begin here
 #
+
+# source for git promt
+source /usr/share/git/completion/git-prompt.sh
+
+# color some things
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
 
 # Alias section
 alias ..="cd .."
