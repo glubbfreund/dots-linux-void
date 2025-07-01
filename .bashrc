@@ -19,9 +19,19 @@ if [ -f /usr/share/git/completion/git-prompt.sh ]; then
     source /usr/share/git/completion/git-prompt.sh
 fi
 
+# history size
+export HISTSIZE=10000
+export HISTFILESIZE=50000
+
 # color some things
 alias ls='ls --color=auto'
-alias grep='grep --color=auto'
+alias grep='grep --color=always'
+alias less='less -R'
+
+# my hist function
+hist() {
+  grep "$*" ~/.bash_history | less
+}
 
 # Alias section
 alias ..="cd .."
