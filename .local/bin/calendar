@@ -1,9 +1,8 @@
 #!/bin/bash
 # ~/.local/bin/zeige-kalender.sh
 
-sleep 60
+sleep 10
 
 wget -O ~/.local/share/calendar.ics 'https://app.klender.nl/b/ics/LeisPresl-df0f1c8b01ad89e5073d873837ee9315d0d74b42469ac2944a760b9dadff44b3.ics' || notify-send "Kalenderimport fehlgeschlagen." --icon=calendar
 
-# older versions: pgrep -x orage >/dev/null || orage &
-orage &
+pgrep -x orage >/dev/null || orage &
