@@ -1,5 +1,5 @@
 #!/bin/bash
-# ~/.local/bin/zeige-kalender.sh
+# ~/.local/bin/kalender
 
 sleep 10
 
