@@ -1,4 +1,0 @@
-#!/bin/bash
-# ~/.local/bin/gpu_int
-
-[ "$(supergfxctl -g)" = "AsusMuxDgpu" ] && yad --title="MUX-Steuerung" --text="\n Zur integrierten GPU umschalten und neu starten? \n" && supergfxctl -m Integrated && xfce4-session-logout --reboot || [ $(supergfxctl -g) != "Integrated" ] && yad --title="MUX-Steuerung" --text="\n Zur integrierten GPU umschalten? \n" && ([ "$(supergfxctl -g)" != "AsusMuxDgpu" ] && supergfxctl -m Integrated && xfce4-session-logout --logout)

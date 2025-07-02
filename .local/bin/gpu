@@ -1,0 +1,31 @@
+#!/bin/bash
+# ~/.local/bin/gpu
+
+case $1 in
+    "hyb")
+	[ "$(supergfxctl -g)" = "AsusMuxDgpu" ] &&
+	    yad --title="MUX-Steuerung" --text="\n Zum Hybridmodus umschalten und neu starten? \n" &&
+	    supergfxctl -m Hybrid && xfce4-session-logout --reboot ||
+		[ $(supergfxctl -g) != "Hybrid" ] &&
+		    yad --title="MUX-Steuerung" --text="\n Zum Hybridmodus umschalten? \n" &&
+		    ([ "$(supergfxctl -g)" != "AsusMuxDgpu" ] &&
+			 supergfxctl -m Hybrid && xfce4-session-logout --logout)
+	;;
+    "int")
+	[ "$(supergfxctl -g)" = "AsusMuxDgpu" ] &&
+	    yad --title="MUX-Steuerung" --text="\n Zur integrierten GPU umschalten und neu starten? \n" &&
+	    supergfxctl -m Integrated && xfce4-session-logout --reboot ||
+		[ $(supergfxctl -g) != "Integrated" ] &&
+		    yad --title="MUX-Steuerung" --text="\n Zur integrierten GPU umschalten? \n" &&
+		    ([ "$(supergfxctl -g)" != "AsusMuxDgpu" ] &&
+			 supergfxctl -m Integrated && xfce4-session-logout --logout)
+	;;
+    "ded")
+	[ $(supergfxctl -g) != "AsusMuxDgpu" ] &&
+	    yad --title="MUX-Steuerung" --text="\n Zur Nvidia Karte umschalten und neu starten? \n" &&
+	    supergfxctl -m AsusMuxDgpu && xfce4-session-logout --reboot
+	;;
+    *)
+	echo "Parameters to choose are hybrid|internal|dedicated"
+	;;
+esac
