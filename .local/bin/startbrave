@@ -1,4 +1,7 @@
 #!/bin/bash
 # ~/.local/bin/startbrave
 
-~/.local/bin/starton brave 1 "$1"
+wmctrl -s 1
+if ! pgrep -x "brave" > /dev/null; then
+    brave --no-default-browser-check $1 &
+fi
