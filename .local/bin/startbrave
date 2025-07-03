@@ -1,0 +1,4 @@
+#!/bin/bash
+# ~/.local/bin/startbrave
+
+~/.local/bin/starton brave 1 "$1"
