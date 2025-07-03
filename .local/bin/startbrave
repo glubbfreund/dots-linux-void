@@ -2,6 +2,10 @@
 # ~/.local/bin/startbrave
 
 wmctrl -s 1
-if ! pgrep -x "brave" > /dev/null; then
-    brave --no-default-browser-check $1 &
+if ! pgrep -x "brave"  > /dev/null; then
+    brave --no-default-browser-check "$1" &
+else
+    if [[ -n "$1" ]];then
+	brave --no-default-browser-check "$1" &
+    fi
 fi
