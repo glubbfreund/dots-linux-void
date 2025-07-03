@@ -2,7 +2,7 @@
 # ~/.local/bin/startemacs
 
 wmctrl -s 2
-if ! wmctrl -l | grep "Emacs" > /dev/null; then
+if ! wmctrl -l | grep "GNU Emacs" > /dev/null; then
     emacsclient -c $@ &
 else
     if [ $# -gt 0 ]; then
