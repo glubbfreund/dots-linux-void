@@ -74,7 +74,7 @@ fi
 # Command prompt formatting function
 update_prompt() {
   local EXIT=$?
-  local DIR_COLOR="\[\e[90m\]"
+  local DIR_COLOR="\[\e[36m\]"
   local OK_COLOR="\[\e[37m\]"
   local ERR_COLOR="\[\e[31m\]"
   local RESET="\[\e[0m\]"

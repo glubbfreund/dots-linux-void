@@ -1,0 +1,5 @@
+#!/bin/bash
+# ~/.local/bin/startgnus
+
+wmctrl -s 2
+emacsclient -c -e "(gnus)"
