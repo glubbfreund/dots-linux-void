@@ -3,6 +3,4 @@
 
 devilspie2 &
 sleep 2
-brave --crash-restore-bubble &
-sleep 2
 emacsclient -c &
