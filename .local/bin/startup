@@ -2,7 +2,5 @@
 # ~/.local/bin/startup
 
 devilspie2 &
-sleep 3
-brave --no-default-browser-check &
 sleep 2
 emacsclient -c &

@@ -23,21 +23,17 @@ fi
 export HISTSIZE=10000
 export HISTFILESIZE=50000
 
-# color some things
+# Alias section
 alias ls='ls --color=auto'
 alias grep='grep --color=always'
 alias less='less -R'
-
-# my hist function
-hist() {
-  grep "$*" ~/.bash_history | less
-}
-
-# Alias section
 alias ..="cd .."
 alias ec="emacsclient --tty"
 alias ecc="emacsclient -c"
 alias dots='/usr/bin/git --git-dir=$HOME/.dots/ --work-tree=$HOME'
+
+# Setup fzf
+eval "$(fzf --bash)"
 
 # No second tab, show instant
 bind 'set show-all-if-ambiguous on'
@@ -63,8 +59,8 @@ shopt -s dirspell
 shopt -s direxpand
 
 # load git completions prompt modules only if installed
-if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
-    source /usr/share/git-core/contrib/completion/git-prompt.sh
+if [ -f /usr/share/git/completion/git-prompt.sh ]; then
+    source /usr/share/git/completion/git-prompt.sh
     GIT_PS1_SHOWDIRTYSTATE=1
     GIT_PS1_SHOWSTASHSTATE=1
     GIT_PS1_SHOWUNTRACKEDFILES=1
@@ -83,6 +79,8 @@ update_prompt() {
 
   # git repo string
   local GIT="${COLOR_GIT}$(__git_ps1 '%s ')"
+  local GIT="${GIT//[[:space:]]/} "
+  local GIT="${GIT//=/}"
 
   # check error code and set colors
   if [[ $EXIT -eq 0 ]]; then
