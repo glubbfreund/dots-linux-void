@@ -78,9 +78,12 @@ update_prompt() {
   local COLOR_GIT="\[\e[38;5;214m\]"
 
   # git repo string
-  local GIT="${COLOR_GIT}$(__git_ps1 '%s ')"
-  local GIT="${GIT//[[:space:]]/} "
-  local GIT="${GIT//=/}"
+  local GIT="$(__git_ps1 '%s')"
+  if [[ ! -z $GIT ]];then
+      local GIT="$COLOR_GIT$GIT"
+      local GIT="${GIT//[[:space:]]/} "
+      local GIT="${GIT//=/}"
+  fi
 
   # check error code and set colors
   if [[ $EXIT -eq 0 ]]; then
