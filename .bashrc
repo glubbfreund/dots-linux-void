@@ -98,6 +98,3 @@ update_prompt() {
 
 # run for every prompt
 PROMPT_COMMAND=update_prompt
-
-# run fastfetch on startup
-fastfetch
