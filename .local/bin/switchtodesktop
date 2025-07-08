@@ -1,0 +1,10 @@
+#!/bin/bash
+
+TARGET_DESKTOP=$1
+ACTIVE_WIN=$(xdotool getactivewindow)
+
+wmctrl -i -r "$ACTIVE_WIN" -t "$TARGET_DESKTOP"
+wmctrl -s "$TARGET_DESKTOP"
+
+sleep 0.1
+xdotool windowactivate "$ACTIVE_WIN"
