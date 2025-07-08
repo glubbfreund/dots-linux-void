@@ -71,7 +71,7 @@ fi
 update_prompt() {
   local EXIT=$?
   local DIR_COLOR="\[\e[36m\]"
-  local OK_COLOR="\[\e[37m\]"
+  local OK_COLOR="\[\e[90m\]"
   local ERR_COLOR="\[\e[31m\]"
   local RESET="\[\e[0m\]"
   local GIT=""
