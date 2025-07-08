@@ -1,4 +1,5 @@
 #!/bin/bash
+# ~/.local/bin/switchtodesktop
 
 TARGET_DESKTOP=$1
 ACTIVE_WIN=$(xdotool getactivewindow)
