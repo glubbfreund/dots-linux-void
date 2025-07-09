@@ -1,6 +1,0 @@
-#!/bin/bash
-# ~/.local/bin/startup
-
-devilspie2 &
-sleep 2
-emacsclient -c &

@@ -1,0 +1,4 @@
+#!/bin/bash
+# ~/.local/bin/gpumonitor
+
+m=$(supergfxctl -g | cut -c1-3); [ "$m" = "Asu" ] && echo Ded || echo "$m"
