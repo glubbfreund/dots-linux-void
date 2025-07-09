@@ -12,8 +12,7 @@
     },
     "modules": [
         "break",
-        "title",
-	"separator",
+	"break",
         "os",
 	"host",
         {
@@ -42,6 +41,7 @@
             "format": "{} / {}"
         },
         "break",
+	"break",
 	"break",
     ]
 }
