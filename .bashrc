@@ -23,6 +23,9 @@ fi
 export HISTSIZE=10000
 export HISTFILESIZE=50000
 
+# other variables
+export EDITOR="/usr/bin/emacs -nw"
+
 # Alias section
 alias ls='ls --color=auto'
 alias grep='grep --color=always'
