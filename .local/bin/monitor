@@ -1,4 +1,0 @@
-#!/bin/bash
-# ~/.local/bin/monitor
-
-m=$(supergfxctl -g | cut -c1-3); [ "$m" = "Asu" ] && echo Ded || echo "$m"

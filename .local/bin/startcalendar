@@ -1,0 +1,4 @@
+#!/bin/bash
+# ~/.local/bin/startcalendar
+
+pgrep -x orage >/dev/null || orage &
