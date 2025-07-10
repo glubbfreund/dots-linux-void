@@ -3,7 +3,7 @@
 
 wmctrl -s 2
 if ! wmctrl -l | grep "GNU Emacs" > /dev/null; then
-    emacsclient -c $@ &
+    emacsclient -c "$@" &
 else
     if [ $# -gt 0 ]; then
         emacsclient "$@" &
