@@ -1,0 +1,6 @@
+[Unit]
+Description=Batterie überwachen
+
+[Service]
+Type=oneshot
+ExecStart=/home/oli/.local/bin/batmonitor

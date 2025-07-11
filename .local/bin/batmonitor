@@ -1,0 +1,8 @@
+#!/bin/bash
+# ~/.local/bin/batmonitor
+
+if [ "$(cat /sys/class/power_supply/BAT1/capacity)" -gt 62 ]; then
+notify-send -i battery-missing-symbolic \
+  "Akku über 60 %" \
+  "Bitte kurz entladen zur Akkuschonung"
+fi

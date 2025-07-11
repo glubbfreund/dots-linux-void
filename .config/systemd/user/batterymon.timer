@@ -1,0 +1,9 @@
+[Unit]
+Description=Timer für Überwachung der Batterieladung
+
+[Timer]
+OnUnitActiveSec=60min
+Persistent=true
+
+[Install]
+WantedBy=timers.target
