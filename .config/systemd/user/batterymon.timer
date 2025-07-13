@@ -3,7 +3,7 @@ Description=Timer für Überwachung der Batterieladung
 
 [Timer]
 OnBootSec=2min
-OnUnitActiveSec=5min
+OnUnitActiveSec=10min
 Persistent=true
 
 [Install]
