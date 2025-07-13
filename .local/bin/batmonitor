@@ -2,13 +2,14 @@
 # ~/.local/bin/batmonitor
 
 filemarker=~/.bat
+capacity=$(cat /sys/class/power_supply/BAT1/capacity)
 
-if [ "$(cat /sys/class/power_supply/BAT1/capacity)" -gt 62 ]; then
+if [ $capacity -gt 62 ]; then
     notify-send -i battery-missing-symbolic \
 		"Akku über 60 %" \
 		"Bitte entladen um Akku zu schonen."
     touch $filemarker
-elif [ -f $filemarker ]; then
+elif [ -f $filemarker ] && [ $capacity -lt 60 ]; then
     notify-send -i battery-good \
 		"Akkuladung OK!" \
 		"Netzteil kann wieder eingesteckt werden."
