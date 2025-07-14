@@ -39,9 +39,6 @@ alias dots='/usr/bin/git --git-dir=$HOME/.dots/ --work-tree=$HOME'
 findcontent() { rg --no-heading --line-number --color=always "$@" | fzf --ansi --delimiter : --preview "bat --color=always --highlight-line {2} {1}"; }
 findfile() {  fd --type f "$1" . | fzf --ansi --preview 'bat --color=always --style=numbers --line-range=:500 {}'; }
 
-# Setup fzf
-eval "$(fzf --bash)"
-
 # No second tab, show instant
 bind 'set show-all-if-ambiguous on'
 # Case insensitive searching
@@ -105,3 +102,8 @@ update_prompt() {
 
 # run for every prompt
 PROMPT_COMMAND=update_prompt
+
+# Setup fzf
+eval "$(fzf --bash)"
+# Setup zoxide
+eval "$(zoxide init bash)"
