@@ -2,7 +2,7 @@
 # ~/.local/bin/startbrave
 
 wmctrl -s 1
-if ! wmctrl -lx | grep -i 'brave-browser' | grep -vi 'whatsapp web'; then
+if ! wmctrl -lx | grep -i 'brave-browser'; then
     brave --no-default-browser-check --hide-crash-restore-bubble "$1" &
 else
     if [[ -n "$1" ]];then
