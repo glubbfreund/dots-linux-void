@@ -1,7 +1,10 @@
 #!/bin/bash
 # ~/.local/bin/batmonitor
 
-filemarker=~/.bat
+export DISPLAY=:0
+export XAUTHORITY=/home/oli/.Xauthority
+
+filemarker=/home/oli/.bat
 capacity=$(cat /sys/class/power_supply/BAT1/capacity)
 
 if [ $capacity -gt 62 ]; then

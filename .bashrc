@@ -63,8 +63,8 @@ shopt -s dirspell
 shopt -s direxpand
 
 # load git completions prompt modules only if installed
-if [ -f /usr/share/git/completion/git-prompt.sh ]; then
-    source /usr/share/git/completion/git-prompt.sh
+if [ -f /usr/share/git/git-prompt.sh ]; then
+    source /usr/share/git/git-prompt.sh
     GIT_PS1_SHOWDIRTYSTATE=1
     GIT_PS1_SHOWSTASHSTATE=1
     GIT_PS1_SHOWUNTRACKEDFILES=1
@@ -74,7 +74,7 @@ fi
 # Command prompt formatting function
 update_prompt() {
   local EXIT=$?
-  local DIR_COLOR="\[\e[36m\]"
+  local DIR_COLOR="\[\e[32m\]"
   local OK_COLOR="\[\e[90m\]"
   local ERR_COLOR="\[\e[31m\]"
   local RESET="\[\e[0m\]"

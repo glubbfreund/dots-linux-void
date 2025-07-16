@@ -3,9 +3,9 @@
 
 wmctrl -s 1
 if ! wmctrl -lx | grep -i 'brave-browser'; then
-    brave --no-default-browser-check --hide-crash-restore-bubble "$1" &
+    flatpak run com.brave.Browser --no-default-browser-check --hide-crash-restore-bubble "$1" &
 else
     if [[ -n "$1" ]];then
-	brave --no-default-browser-check --hide-crash-restore-bubble "$1" &
+	flatpak run com.brave.Browser --no-default-browser-check --hide-crash-restore-bubble "$1" &
     fi
 fi

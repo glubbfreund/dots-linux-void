@@ -1,4 +1,4 @@
 #!/bin/bash
 # ~/.local/bin/gpumonitor
 
-m=$(supergfxctl -g | cut -c1-3); [ "$m" = "Asu" ] && echo Ded || echo "$m"
+m=$(rog-mux -g | awk '{print substr($NF, 1, 3)}'); [ "$m" = "Asu" ] && echo Ded || echo "$m"
