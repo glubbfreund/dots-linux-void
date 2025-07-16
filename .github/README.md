@@ -2,7 +2,7 @@
 ## Restore dotfiles
 1) alias dots='/usr/bin/git --git-dir=$HOME/.dots/ --work-tree=$HOME'
 2) echo ".dots" >> .gitignore
-3) git clone --bare <git-repo-url> $HOME/.dots
+3) git clone https://github.com/glubbfreund/dots-linux --bare <git-repo-url> $HOME/.dots
 4) dots checkout
 5) dots config --local status.showUntrackedFiles no
 ## Git config
