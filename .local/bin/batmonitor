@@ -7,7 +7,7 @@ export XAUTHORITY=/home/oli/.Xauthority
 filemarker=/home/oli/.bat
 capacity=$(cat /sys/class/power_supply/BAT1/capacity)
 
-if [ $capacity -gt 62 ]; then
+if [ $capacity -gt 65 ]; then
     notify-send -i battery-missing-symbolic \
 		"Akku über 60 %" \
 		"Bitte entladen um Akku zu schonen."

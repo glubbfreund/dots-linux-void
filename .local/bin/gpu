@@ -8,24 +8,24 @@ case $1 in
 	[ "$gpumode" != "OPT" ] &&
 	    yad --title="MUX-Steuerung" --text="\n Zu Optimus umschalten und neu starten? \n" &&
 	    rog-mux -s optimus &&
-	    rog-profile -s balanced &&
-	    mv /etc/udev/rules.d/00-remove-nvidia.rules /etc/udev/rules.d/00-remove-nvidia.disabled &&
+	    { [ -e /etc/udev/rules.d/00-remove-nvidia.disabled ] || \
+		  mv /etc/udev/rules.d/00-remove-nvidia.rules /etc/udev/rules.d/00-remove-nvidia.disabled; } &&
 	    xfce4-session-logout --reboot
 	;;
     "int")
 	[ "$gpumode" != "INT" ] &&
 	    yad --title="MUX-Steuerung" --text="\n Zu Interner GPU umschalten und neu starten? \n" &&
             rog-mux -s optimus &&
-	    rog-profile -s quiet &&
-	    mv /etc/udev/rules.d/00-remove-nvidia.disabled /etc/udev/rules.d/00-remove-nvidia.rules &&
+	    { [ -e /etc/udev/rules.d/00-remove-nvidia.rules ] || \
+		  mv /etc/udev/rules.d/00-remove-nvidia.disabled /etc/udev/rules.d/00-remove-nvidia.rules; } &&
 	    xfce4-session-logout --reboot
 	;;
     "ult")
 	[ "$gpumode" != "ULT" ] &&
 	    yad --title="MUX-Steuerung" --text="\n Zu Ultimate umschalten und neu starten? \n" &&
-	    mv /etc/udev/rules.d/00-remove-nvidia.rules /etc/udev/rules.d/00-remove-nvidia.disabled &&
 	    rog-mux -s ultimate &&
-	    rog-profile -s performance &&
+	    { [ -e /etc/udev/rules.d/00-remove-nvidia.disabled ] || \
+		  mv /etc/udev/rules.d/00-remove-nvidia.rules /etc/udev/rules.d/00-remove-nvidia.disabled; } &&
 	    xfce4-session-logout --reboot
 	;;
     *)
