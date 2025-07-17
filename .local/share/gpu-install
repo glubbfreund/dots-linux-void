@@ -1,0 +1,6 @@
+#!/bin/bash
+# ~/.local/share/gpu-install
+
+sudo cp ./gpu /usr/local/bin/gpu
+sudo chown root:root /usr/local/bin/gpu
+sudo chmod 755 /usr/local/bin/gpu
