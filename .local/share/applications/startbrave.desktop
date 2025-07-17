@@ -1,0 +1,7 @@
+# ~/.local/share/applications/startbrave.desktop
+[Desktop Entry]
+Name=Start Brave
+Exec=/home/oli/.local/bin/startbrave %u
+Type=Application
+MimeType=x-scheme-handler/http;x-scheme-handler/https;
+NoDisplay=true
