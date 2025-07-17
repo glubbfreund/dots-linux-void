@@ -1,6 +1,13 @@
 #!/bin/bash
 # ~/.local/share/gpu-install
 
+# MANUAL INTERVENTION
+#######################
+# add the following with visudo
+# oli ALL=(ALL) NOPASSWD: /usr/local/bin/gpu opt
+# oli ALL=(ALL) NOPASSWD: /usr/local/bin/gpu int
+# oli ALL=(ALL) NOPASSWD: /usr/local/bin/gpu ult
+
 sudo cp ./gpu /usr/local/bin/gpu
 sudo chown root:root /usr/local/bin/gpu
 sudo chmod 755 /usr/local/bin/gpu

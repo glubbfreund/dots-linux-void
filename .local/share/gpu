@@ -1,5 +1,5 @@
 #!/bin/bash
-# ~/.local/bin/gpu
+# /usr/local/bin/gpu
 
 gpumode=$(/home/oli/.local/bin/gpumonitor)
 
