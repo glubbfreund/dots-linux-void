@@ -1,0 +1,9 @@
+#!/bin/bash
+# ~/.local/bin/profile
+
+rogMessage=$(rog-profile -n)
+currentProfile=$(echo $rogMessage | awk '{print $NF}')
+
+notify-send -i indicator-sensors-fan \
+	    "Profil gewechselt" \
+	    "Lüfterprofil $currentProfile ist nun aktiv."

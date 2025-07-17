@@ -1,4 +1,10 @@
 #!/bin/bash
 # ~/.local/bin/gpumonitor
 
-m=$(rog-mux -g | awk '{print substr($NF, 1, 3)}'); [ "$m" = "Asu" ] && echo Ded || echo "$m"
+gpuMode=$(rog-mux -g | awk '{print toupper(substr($NF, 1, 3))}')
+
+if ! lspci | grep -q NVIDIA && [ $gpuMode = "OPT" ]; then
+    gpuMode="INT"
+fi
+
+echo "$gpuMode"

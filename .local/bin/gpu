@@ -1,31 +1,34 @@
 #!/bin/bash
 # ~/.local/bin/gpu
 
+gpumode=$(/home/oli/.local/bin/gpumonitor)
+
 case $1 in
-    "hyb")
-	[ "$(supergfxctl -g)" = "AsusMuxDgpu" ] &&
-	    yad --title="MUX-Steuerung" --text="\n Zum Hybridmodus umschalten und neu starten? \n" &&
-	    supergfxctl -m Hybrid && xfce4-session-logout --reboot ||
-		[ $(supergfxctl -g) != "Hybrid" ] &&
-		    yad --title="MUX-Steuerung" --text="\n Zum Hybridmodus umschalten? \n" &&
-		    ([ "$(supergfxctl -g)" != "AsusMuxDgpu" ] &&
-			 supergfxctl -m Hybrid && xfce4-session-logout --logout)
+    "opt")
+	[ "$gpumode" != "OPT" ] &&
+	    yad --title="MUX-Steuerung" --text="\n Zu Optimus umschalten und neu starten? \n" &&
+	    rog-mux -s optimus &&
+	    rog-profile -s balanced &&
+	    mv /etc/udev/rules.d/00-remove-nvidia.rules /etc/udev/rules.d/00-remove-nvidia.disabled &&
+	    xfce4-session-logout --reboot
 	;;
     "int")
-	[ "$(supergfxctl -g)" = "AsusMuxDgpu" ] &&
-	    yad --title="MUX-Steuerung" --text="\n Zur integrierten GPU umschalten und neu starten? \n" &&
-	    supergfxctl -m Integrated && xfce4-session-logout --reboot ||
-		[ $(supergfxctl -g) != "Integrated" ] &&
-		    yad --title="MUX-Steuerung" --text="\n Zur integrierten GPU umschalten? \n" &&
-		    ([ "$(supergfxctl -g)" != "AsusMuxDgpu" ] &&
-			 supergfxctl -m Integrated && xfce4-session-logout --logout)
+	[ "$gpumode" != "INT" ] &&
+	    yad --title="MUX-Steuerung" --text="\n Zu Interner GPU umschalten und neu starten? \n" &&
+            rog-mux -s optimus &&
+	    rog-profile -s quiet &&
+	    mv /etc/udev/rules.d/00-remove-nvidia.disabled /etc/udev/rules.d/00-remove-nvidia.rules &&
+	    xfce4-session-logout --reboot
 	;;
-    "ded")
-	[ $(supergfxctl -g) != "AsusMuxDgpu" ] &&
-	    yad --title="MUX-Steuerung" --text="\n Zur Nvidia Karte umschalten und neu starten? \n" &&
-	    supergfxctl -m AsusMuxDgpu && xfce4-session-logout --reboot
+    "ult")
+	[ "$gpumode" != "ULT" ] &&
+	    yad --title="MUX-Steuerung" --text="\n Zu Ultimate umschalten und neu starten? \n" &&
+	    mv /etc/udev/rules.d/00-remove-nvidia.rules /etc/udev/rules.d/00-remove-nvidia.disabled &&
+	    rog-mux -s ultimate &&
+	    rog-profile -s performance &&
+	    xfce4-session-logout --reboot
 	;;
     *)
-	echo "Parameters to choose are hybrid|internal|dedicated"
+	echo "Parameters to choose are opt|ult|int"
 	;;
 esac

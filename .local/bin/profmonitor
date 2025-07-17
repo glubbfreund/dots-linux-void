@@ -1,0 +1,5 @@
+#!/bin/bash
+# ~/.local/bin/profmonitor
+
+fanProfile=$(rog-profile -g | awk '{print toupper(substr($NF,1,3))}')
+echo "$fanProfile "
