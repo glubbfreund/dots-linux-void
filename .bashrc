@@ -25,7 +25,7 @@ export HISTFILESIZE=50000
 
 # other variables
 export EDITOR="/usr/bin/emacs -nw"
-export SUDO_PROMPT="$(tput setaf 1 bold)Password:$(tput sgr0) "
+export SUDO_PROMPT="$(tput setaf 2 bold)Password:$(tput sgr0) "
 
 # Alias section
 alias ls='ls --color=auto'
