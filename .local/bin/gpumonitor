@@ -4,7 +4,9 @@
 gpuMode=$(rog-mux -g | awk '{print toupper(substr($NF, 1, 3))}')
 
 if ! lspci | grep -q NVIDIA && [ $gpuMode = "OPT" ]; then
-    gpuMode="INT"
+    gpuMode="ECO"
+elif [[ "$gpuMode" == "OPT" ]]; then
+    gpuMode="HYB"
 fi
 
 echo "$gpuMode"
