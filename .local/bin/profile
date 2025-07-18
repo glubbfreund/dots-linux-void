@@ -7,3 +7,5 @@ currentProfile=$(echo $rogMessage | awk '{print $NF}')
 notify-send -i indicator-sensors-fan \
 	    "Profil gewechselt" \
 	    "Lüfterprofil $currentProfile ist nun aktiv."
+
+xfce4-panel --plugin-event=genmon-16:refresh:bool:true
