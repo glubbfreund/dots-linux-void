@@ -38,10 +38,6 @@ alias ecc="emacsclient -c"
 alias dots='/usr/bin/git --git-dir=$HOME/.dots/ --work-tree=$HOME'
 alias xbps-srcu="curDir=$(pwd);j void-packages && git pull && cd srcpkgs/brave-bin/ && git pull && j void-packages && ./xbps-src pkg brave-bin spotify && ./xbps-src clean  && cd $curDir"
 
-# Custom functions
-findcontent() { rg --no-heading --line-number --color=always "$@" | fzf --ansi --delimiter : --preview "bat --color=always --highlight-line {2} {1}"; }
-findfile() {  fd --type f "$1" . | fzf --ansi --preview 'bat --color=always --style=numbers --line-range=:500 {}'; }
-
 # No second tab, show instant
 bind 'set show-all-if-ambiguous on'
 # Case insensitive searching
