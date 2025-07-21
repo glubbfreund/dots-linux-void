@@ -1,9 +1,0 @@
-#!/bin/bash
-# ~/.local/bin/startmodrinth
-
-gpumode=$(~/.local/bin/gpumonitor)
-if [[ "$gpumode" == "OPT" ]];then
-    __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia flatpak run com.modrinth.ModrinthApp &
-else
-    flatpak run com.modrinth.ModrinthApp &
-fi
