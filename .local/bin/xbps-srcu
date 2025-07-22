@@ -2,17 +2,41 @@
 # ~/.local/bin/xbps-srcu
 
 curDir=$(pwd)
-echo -ne "[ ] Updating Source packages ..."
+fetchingStr="Fetching repository updates"
+updateStr="Updating xbps packages"
+cleanStr="Cleaning up"
+
+echo -ne "[ ] $fetchingStr ...\r"
 {
 	cd ~/Dokumente/Src/void-packages && git pull &&
-	cd srcpkgs/brave-bin/ && git pull &&
-	cd ~/Dokumente/Src/void-packages && ./xbps-src pkg brave-bin spotify && ./xbps-src clean
+	cd srcpkgs/brave-bin/ && git pull
 } > /dev/null 2>&1
 
 if [ $? -eq 0 ]; then
-    echo -e "\r[*] Updating Source packages ..."
+    echo -e "[*] $fetchingStr ..."
 else
-    echo -e "\r[!] Updating Source packages ..."
+    echo -e "[!] $fetchingStr ..."
+fi
+
+echo -ne "[ ] $updateStr ...\r"
+{
+    cd ~/Dokumente/Src/void-packages &&
+	./xbps-src pkg brave-bin spotify
+} > /dev/null 2>&1
+
+if [ $? -eq 0 ]; then
+    echo -e "[*] $updateStr ..."
+else
+    echo -e "[!] $updateStr ..."
+fi
+
+echo -ne "[ ] $cleanStr ...\r"
+./xbps-src clean > /dev/null 2>&1
+
+if [ $? -eq 0 ]; then
+    echo -e "[*] $cleanStr ..."
+else
+    echo -e "[!] $cleanStr ..."
 fi
 
 cd "$curDir"

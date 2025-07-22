@@ -101,21 +101,6 @@ update_prompt() {
 # run for every prompt
 PROMPT_COMMAND=update_prompt
 
-# wrapper for xbps-install to add s for source update
-xbps-install() {
-    if [[ "$*" == *"-Sus"* ]]; then
-        ~/.local/bin/xbps-srcu
-        command sudo xbps-install ${@//-Sus/-Su}
-    else
-        command sudo xbps-install "$@"
-    fi
-}
-
-# wrapper for missing sudo on xbps-remove
-xbps-remove() {
-    command sudo xbps-remove "$@"
-}
-
 # Setup fzf
 eval "$(fzf --bash)"
 # Setup zoxide
