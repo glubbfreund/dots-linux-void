@@ -2,16 +2,28 @@
 # ~/.local/bin/xbps-srcu
 
 curDir=$(pwd)
+verbose=false
+
+if [[ "$1" == "-v" ]]; then
+    verbose=true
+    shift
+fi
 
 run_step() {
     local msg="$1"
     shift
     echo -ne "[ ] $msg ...\r"
-    "$@" > /dev/null 2>&1
+    if $verbose; then
+        "$@"
+    else
+        "$@" > /dev/null 2>&1
+    fi
     if [ $? -eq 0 ]; then
         echo -e "[*] $msg ..."
     else
         echo -e "[!] $msg ..."
+	echo "Aborting ..."
+	exit 1
     fi
 }
 
@@ -26,6 +38,9 @@ run_step "Updating xbps packages" bash -c '
     ./xbps-src pkg brave-bin spotify
 '
 
-run_step "Cleaning up" ./xbps-src clean
+run_step "Cleaning up" bash -c '
+    cd ~/Dokumente/Src/void-packages &&
+    ./xbps-src clean
+'
 
 cd "$curDir"
