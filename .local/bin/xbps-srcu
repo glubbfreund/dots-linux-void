@@ -1,0 +1,18 @@
+#!/bin/bash
+# ~/.local/bin/xbps-srcu
+
+curDir=$(pwd)
+echo -ne "[ ] Updating Source packages ..."
+{
+	cd ~/Dokumente/Src/void-packages && git pull &&
+	cd srcpkgs/brave-bin/ && git pull &&
+	cd ~/Dokumente/Src/void-packages && ./xbps-src pkg brave-bin spotify && ./xbps-src clean
+} > /dev/null 2>&1
+
+if [ $? -eq 0 ]; then
+    echo -e "\r[*] Updating Source packages ..."
+else
+    echo -e "\r[!] Updating Source packages ..."
+fi
+
+cd "$curDir"

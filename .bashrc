@@ -36,7 +36,6 @@ alias j="z"
 alias ec="emacsclient --tty"
 alias ecc="emacsclient -c"
 alias dots='/usr/bin/git --git-dir=$HOME/.dots/ --work-tree=$HOME'
-alias xbps-srcu="curDir=$(pwd);j void-packages && git pull && cd srcpkgs/brave-bin/ && git pull && j void-packages && ./xbps-src pkg brave-bin spotify && ./xbps-src clean  && cd $curDir"
 
 # No second tab, show instant
 bind 'set show-all-if-ambiguous on'
@@ -101,6 +100,16 @@ update_prompt() {
 
 # run for every prompt
 PROMPT_COMMAND=update_prompt
+
+# wrapper for xbps-install to add s for source update
+xbps-install() {
+    if [[ "$*" == *"-Sus"* ]]; then
+        ~/.local/bin/xbps-srcu
+        command sudo xbps-install ${@//-Sus/-Su}
+    else
+        command sudo xbps-install "$@"
+    fi
+}
 
 # Setup fzf
 eval "$(fzf --bash)"
