@@ -111,6 +111,11 @@ xbps-install() {
     fi
 }
 
+# wrapper for missing sudo on xbps-remove
+xbps-remove() {
+    command sudo xbps-remove "$@"
+}
+
 # Setup fzf
 eval "$(fzf --bash)"
 # Setup zoxide
