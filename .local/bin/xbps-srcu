@@ -2,41 +2,30 @@
 # ~/.local/bin/xbps-srcu
 
 curDir=$(pwd)
-fetchingStr="Fetching repository updates"
-updateStr="Updating xbps packages"
-cleanStr="Cleaning up"
 
-echo -ne "[ ] $fetchingStr ...\r"
-{
-	cd ~/Dokumente/Src/void-packages && git pull &&
-	cd srcpkgs/brave-bin/ && git pull
-} > /dev/null 2>&1
+run_step() {
+    local msg="$1"
+    shift
+    echo -ne "[ ] $msg ...\r"
+    "$@" > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        echo -e "[*] $msg ..."
+    else
+        echo -e "[!] $msg ..."
+    fi
+}
 
-if [ $? -eq 0 ]; then
-    echo -e "[*] $fetchingStr ..."
-else
-    echo -e "[!] $fetchingStr ..."
-fi
-
-echo -ne "[ ] $updateStr ...\r"
-{
+ run_step "Fetching repository updates" bash -c '
     cd ~/Dokumente/Src/void-packages &&
-	./xbps-src pkg brave-bin spotify
-} > /dev/null 2>&1
+    git pull &&
+    cd srcpkgs/brave-bin && git pull
+'
 
-if [ $? -eq 0 ]; then
-    echo -e "[*] $updateStr ..."
-else
-    echo -e "[!] $updateStr ..."
-fi
+run_step "Updating xbps packages" bash -c '
+    cd ~/Dokumente/Src/void-packages &&
+    ./xbps-src pkg brave-bin spotify
+'
 
-echo -ne "[ ] $cleanStr ...\r"
-./xbps-src clean > /dev/null 2>&1
-
-if [ $? -eq 0 ]; then
-    echo -e "[*] $cleanStr ..."
-else
-    echo -e "[!] $cleanStr ..."
-fi
+run_step "Cleaning up" ./xbps-src clean
 
 cd "$curDir"
