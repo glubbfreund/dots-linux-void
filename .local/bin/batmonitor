@@ -7,12 +7,12 @@ export XAUTHORITY=/home/oli/.Xauthority
 filemarker=/home/oli/.bat
 capacity=$(cat /sys/class/power_supply/BAT1/capacity)
 
-if [ $capacity -gt 70 ]; then
+if [ $capacity -gt 80 ]; then
     notify-send -i battery-missing-symbolic \
-		"Akku über 70 %" \
+		"Akku über 80 %" \
 		"Bitte entladen um Akku zu schonen."
     touch $filemarker
-elif [ -f $filemarker ] && [ $capacity -lt 60 ]; then
+elif [ -f $filemarker ] && [ $capacity -le 70 ]; then
     notify-send -i battery-good \
 		"Akkuladung OK!" \
 		"Netzteil kann wieder eingesteckt werden."
