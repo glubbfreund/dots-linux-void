@@ -6,7 +6,7 @@ gpumode=$(/home/oli/.local/bin/gpumonitor)
 case $1 in
     "opt")
 	[ "$gpumode" != "HYB" ] &&
-	    yad --title="MUX-Steuerung" --text="\n Zum Hybridmodus umschalten und neu starten? \n" &&
+	    GTK_THEME=Arc-Dark-Custom zenity --question --icon="prime-hybrid" --title="Neustart nötig" --text="\nZum Hybridmodus umschalten? \n" &&
 	    rog-mux -s optimus &&
 	    { [ -e /etc/udev/rules.d/00-remove-nvidia.disabled ] || \
 		  sudo mv /etc/udev/rules.d/00-remove-nvidia.rules /etc/udev/rules.d/00-remove-nvidia.disabled; } &&
@@ -14,7 +14,7 @@ case $1 in
 	;;
     "int")
 	[ "$gpumode" != "ECO" ] &&
-	    yad --title="MUX-Steuerung" --text="\n Zum Ecomodus umschalten und neu starten? \n" &&
+	    GTK_THEME=Arc-Dark-Custom zenity --question --icon="amd-bajo" --title="Neustart nötig" --text="\nZum Ecomodus umschalten? \n" &&
             rog-mux -s optimus &&
 	    { [ -e /etc/udev/rules.d/00-remove-nvidia.rules ] || \
 		  sudo mv /etc/udev/rules.d/00-remove-nvidia.disabled /etc/udev/rules.d/00-remove-nvidia.rules; } &&
@@ -22,7 +22,7 @@ case $1 in
 	;;
     "ult")
 	[ "$gpumode" != "ULT" ] &&
-	    yad --title="MUX-Steuerung" --text="\n Zu Ultimate umschalten und neu starten? \n" &&
+	    GTK_THEME=Arc-Dark-Custom zenity --question --icon="prime-nvidia" --title="Neustart nötig" --text="\nZum Ultimate Modus umschalten? \n" &&
 	    rog-mux -s ultimate &&
 	    { [ -e /etc/udev/rules.d/00-remove-nvidia.disabled ] || \
 		  sudo mv /etc/udev/rules.d/00-remove-nvidia.rules /etc/udev/rules.d/00-remove-nvidia.disabled; } &&
