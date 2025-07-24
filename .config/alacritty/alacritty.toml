@@ -1,0 +1,13 @@
+[general]
+import = ["colors.toml"]
+[window]
+dimensions = { columns = 110, lines = 21 }
+padding = { x = 5, y = 5 }
+title = "Terminal"
+[font]
+normal = { family = "Terminus", style = "regular" }
+size = 14
+[cursor]
+style = { shape="Block", blinking="On"}
+[terminal]
+shell = { program = "/bin/bash", args = ["-c", "fastfetch; exec bash"] }
