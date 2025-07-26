@@ -9,6 +9,8 @@ if [[ "$1" == "-v" ]]; then
     shift
 fi
 
+# For a clean output like the default
+# xbps tools do it
 run_step() {
     local msg="$1"
     shift
@@ -27,20 +29,26 @@ run_step() {
     fi
 }
 
- run_step "Fetching repository updates" bash -c '
+# Pull the updates for void-packages repo
+# and run update-template for Brave
+run_step "Fetching repository updates" bash -c '
     cd ~/Dokumente/Src/void-packages &&
     git pull &&
-    cd srcpkgs/brave-bin && git pull
+    cd srcpkgs/brave-bin &&
+    ./update-template.sh
 '
 
+# Build the packages to run update with
+# xbps-install -Su
 run_step "Updating xbps packages" bash -c '
     cd ~/Dokumente/Src/void-packages &&
     ./xbps-src pkg brave-bin spotify
 '
 
+# Clean everything up and go back to
+# the dir where we started
 run_step "Cleaning up" bash -c '
     cd ~/Dokumente/Src/void-packages &&
     ./xbps-src clean
 '
-
 cd "$curDir"
