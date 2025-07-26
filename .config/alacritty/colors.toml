@@ -1,9 +1,9 @@
 [colors]
-draw_bold_text_with_bright_colors = true
+draw_bold_text_with_bright_colors = false
 
 [colors.primary]
-background = '#2f343f'
-foreground = '#efeffa'
+background = '#e7e8eb'
+foreground = '#2f343f'
 
 [colors.normal]
 black   = '#000000'
