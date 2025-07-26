@@ -1,4 +1,0 @@
-#!/bin/bash
-# ~/Dokumente/Src/spotifyIcons/install
-
-sudo cp *.png *.svg /usr/share/spotify/icons/
