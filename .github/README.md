@@ -1,6 +1,6 @@
 # Howto
 ## General info 
-These are my personal dotfiles, used with Void Linux within Xfce on my Asus tuf notebook. 
+These are my personal dotfiles, used with Void Linux within Xfce on my Asus TUF notebook. 
 ## Restore dotfiles
 1) alias dots='/usr/bin/git --git-dir=$HOME/.dots/ --work-tree=$HOME'
 2) echo ".dots" >> .gitignore
