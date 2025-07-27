@@ -1,6 +1,0 @@
-[Unit]
-Description=Kalender herunterladen
-
-[Service]
-Type=oneshot
-ExecStart=/home/oli/.local/bin/synccalendar
