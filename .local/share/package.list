@@ -1,0 +1,5 @@
+# Normale Pakete
+spotify
+
+# Extern verwaltete Pakete (eigenes Git-Repo)
+custom:brave-bin
