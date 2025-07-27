@@ -89,7 +89,8 @@ done < "$pkglistfile"
 
 # Exit here if there are no updates available
 if [ ${#changed_pkgs[@]} -eq 0 ]; then
-    echo -e "\t=> Everything is allready up to date. Exit."
+    echo -e "\t=> Source packages are allready up to date."
+    sudo xbps-install -Su
     exit 0
 fi
 
@@ -107,3 +108,5 @@ run_step "Cleaning up" bash -c '
     ./xbps-src clean
 '
 cd "$curDir"
+
+sudo xbps-install -Su
