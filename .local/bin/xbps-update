@@ -89,7 +89,6 @@ done < "$pkglistfile"
 
 # Exit here if there are no updates available
 if [ ${#changed_pkgs[@]} -eq 0 ]; then
-    echo -e "\t=> Source packages are allready up to date."
     sudo xbps-install -Su
     exit 0
 fi

@@ -1,7 +1,7 @@
 [general]
 import = ["colors.toml"]
 [window]
-dimensions = { columns = 110, lines = 21 }
+dimensions = { columns = 110, lines = 20 }
 padding = { x = 5, y = 5 }
 title = "Terminal"
 [font]
