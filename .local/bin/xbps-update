@@ -46,7 +46,7 @@ run_step() {
 # Pull the updates for void-packages repo
 # and run update-template for Brave
 voidoldrev=$(git -C ~/Dokumente/Src/void-packages rev-parse HEAD)
-run_step "Fetching void-packages repository updates" bash -c '
+run_step "Updating repository \`void-packages'" bash -c '
     git -C ~/Dokumente/Src/void-packages pull
 '
 voidnewrev=$(git -C ~/Dokumente/Src/void-packages rev-parse HEAD)
@@ -67,7 +67,7 @@ while IFS= read -r pkg; do
         repo_dir="~/Dokumente/Src/void-packages/srcpkgs/$realpkg"
 
         oldrev=$(git -C "$HOME/Dokumente/Src/void-packages/srcpkgs/$realpkg" rev-parse HEAD)
-        run_step "Fetching $realpkg updates" bash -c "
+        run_step "Updating repository \`$realpkg'" bash -c "
             git -C $HOME/Dokumente/Src/void-packages/srcpkgs/$realpkg pull
         "
         newrev=$(git -C "$HOME/Dokumente/Src/void-packages/srcpkgs/$realpkg" rev-parse HEAD)
