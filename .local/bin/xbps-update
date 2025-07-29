@@ -95,7 +95,7 @@ fi
 
 # Build the packages to run update with
 # xbps-install -Su
-run_step "Updating xbps packages" bash -c "
+run_step "Updating xbps source packages" bash -c "
     cd ~/Dokumente/Src/void-packages &&
     ./xbps-src pkg ${changed_pkgs[*]}
 "
