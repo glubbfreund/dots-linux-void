@@ -12,7 +12,7 @@ if [ $capacity -gt 80 ]; then
 		"Akku über 80 %" \
 		"Bitte entladen um Akku zu schonen."
     touch $filemarker
-elif [ -f $filemarker ] && [ $capacity -le 70 ]; then
+elif [ -f $filemarker ] && [ $capacity -le 75 ]; then
     notify-send -i battery-good \
 		"Akkuladung OK!" \
 		"Netzteil kann wieder eingesteckt werden."
