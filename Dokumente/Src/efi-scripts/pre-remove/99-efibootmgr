@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# get the parameters
+PKGNAME="$1"
+VERSION="$2"
+
+# only delete the old entry if its the same version
+old_entry_num=$(efibootmgr | grep "Void Linux ${VERSION}" | awk '{print $1}' | sed 's/[^0-9]*//g')
+[ -n "$old_entry_num" ] && efibootmgr -b "$old_entry_num" -B
+
+# write the new entry
+efibootmgr -c -d /dev/nvme0n1 -p 1 \
+  -L "Void Linux ${VERSION}" \
+  -l "\vmlinuz-${VERSION}" \
+  -u "root=UUID=a3db92cc-8430-4491-85e8-463b67bea970 rd.luks.uuid=bbc540f6-948b-43df-ab2d-889e42635a03 initrd=\initramfs-${VERSION}.img cryptoptions=discard quiet splash amdgpu.dcdebugmask=0x10 net.ifnames=0 loglevel=3"
