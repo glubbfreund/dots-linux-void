@@ -5,7 +5,7 @@ rogMessage=$(rog-profile -n)
 rogCurrentMsg=$(rog-profile -g)
 currentProfile=$(echo $rogMessage | awk '{print $NF}')
 
-xfce4-panel --plugin-event=genmon-16:refresh:bool:true
+xfce4-panel --plugin-event=genmon-15:refresh:bool:true
 
 sleep 2 && [ "$(rog-profile -g)" == "$rogCurrentMsg" ] && notify-send -i indicator-sensors-fan \
 	    "Profil gewechselt" \

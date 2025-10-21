@@ -1,0 +1,3 @@
+#!/bin/bash
+# /etc/kernel.d/post-install/70-sbctl
+sbctl sign-all 2>/dev/null
