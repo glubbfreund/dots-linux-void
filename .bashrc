@@ -29,7 +29,7 @@ export SUDO_PROMPT="$(tput setaf 2 bold)Password:$(tput sgr0) "
 
 # Alias section
 alias ls='ls --color=auto'
-#alias grep='grep --color=always'
+alias grep='grep --color=always'
 alias less='less -R'
 alias ..="cd .."
 alias j="z"
