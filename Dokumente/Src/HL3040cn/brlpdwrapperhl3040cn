@@ -1,0 +1,4 @@
+#!/bin/sh
+# Minimaler Wrapper für Brother HL-3040CN
+
+exec /opt/brother/Printers/hl3040cn/lpd/filterhl3040cn "$$" "CUPS" "NETWORK"
