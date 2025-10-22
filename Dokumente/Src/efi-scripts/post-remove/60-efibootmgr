@@ -1,9 +1,7 @@
 #!/bin/sh
 
-# get the parameters
 PKGNAME="$1"
 VERSION="$2"
 
-# delete old entry
 old_entry_num=$(efibootmgr | grep "Void Linux ${VERSION}" | awk '{print $1}' | sed 's/[^0-9]*//g')
 [ -n "$old_entry_num" ] && efibootmgr -b "$old_entry_num" -B

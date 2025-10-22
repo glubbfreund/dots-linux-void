@@ -1,0 +1,9 @@
+#!/bin/sh
+
+PKGNAME="$1"
+VERSION="$2"
+
+old_entry_num=$(efibootmgr | grep "Void Linux ${VERSION}" | awk '{print $1}' | sed 's/[^0-9]*//g')
+[ -n "$old_entry_num" ] && efibootmgr -b "$old_entry_num" -B
+
+efibootmgr -c -d /dev/nvme0n1 -p 1 -L "Void Linux ${VERSION}" -l "\vmlinuz-${VERSION}" -u "root=UUID=223b89a4-0797-4d98-b0ae-af2a1c0cbe71 rd.luks.uuid=8fcdb21b-9cb4-4b23-97ca-6ee253a0a956 initrd=\initramfs-${VERSION}.img cryptoptions=discard quiet splash amdgpu.dcdebugmask=0x10 net.ifnames=0 loglevel=3"
