@@ -1,7 +1,0 @@
-#!/bin/bash
-# ~/.local/bin/startwhatsapp
-
-wmctrl -s 3
-if ! wmctrl -l | grep -F "WhatsApp Web" > /dev/null; then
-    /opt/brave.com/brave/brave-browser --profile-directory=Default --app-id=hnpfjngllnobngcgfapefoaidbinmjnm &
-fi
