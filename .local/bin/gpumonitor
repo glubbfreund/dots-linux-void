@@ -9,4 +9,4 @@ elif [[ "$gpuMode" == "OPT" ]]; then
     gpuMode="HYB"
 fi
 
-echo "$gpuMode"
+echo "$gpuMode "
