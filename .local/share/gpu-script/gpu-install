@@ -4,6 +4,7 @@
 # MANUAL INTERVENTION
 #######################
 # add visudo file
+# copy udev rule
 
 sudo cp ./gpu /usr/local/bin/gpu
 sudo chown root:root /usr/local/bin/gpu
