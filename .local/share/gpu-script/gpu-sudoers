@@ -1,0 +1,2 @@
+oli ALL=(ALL) NOPASSWD: /usr/bin/mv /etc/udev/rules.d/00-remove-nvidia.disabled /etc/udev/rules.d/00-remove-nvidia.rules
+oli ALL=(ALL) NOPASSWD: /usr/bin/mv /etc/udev/rules.d/00-remove-nvidia.rules /etc/udev/rules.d/00-remove-nvidia.disabled
