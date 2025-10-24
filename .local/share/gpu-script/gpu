@@ -29,6 +29,6 @@ case $1 in
 	    xfce4-session-logout --reboot
 	;;
     *)
-	echo "Parameters to choose are HYB|ECO|ULT"
+	echo "Parameters to choose are opt|int|ult"
 	;;
 esac
