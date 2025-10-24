@@ -4,9 +4,10 @@
 PKGNAME="$1"
 VERSION="$2"
 
-sbctl sign-all 2>/dev/null
+KERNEL_PATH="/boot/vmlinuz-${VERSION}"
 
-for mod in /lib/modules/"${VERSION}"/misc/vbox*.ko; do
-    [ -e "$mod" ] || continue
-    sbctl sign "$mod"
-done
+if [ -f "$KERNEL_PATH" ]; then
+    sbctl sign "$KERNEL_PATH"
+fi
+
+sbctl sign-all 2>/dev/null
