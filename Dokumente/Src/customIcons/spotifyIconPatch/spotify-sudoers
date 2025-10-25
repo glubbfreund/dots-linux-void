@@ -1,2 +1,2 @@
-oli ALL=(ALL) NOPASSWD: /home/oli/Dokumente/Src/spotifyIconPatch/install-spotify-dark.sh
-oli ALL=(ALL) NOPASSWD: /home/oli/Dokumente/Src/spotifyIconPatch/icons_light/install-spotify-light.sh
+oli ALL=(ALL) NOPASSWD: /home/oli/Dokumente/Src/customIcons/spotifyIconPatch/install-spotify-dark.sh
+oli ALL=(ALL) NOPASSWD: /home/oli/Dokumente/Src/customIcons/spotifyIconPatch/icons_light/install-spotify-light.sh
