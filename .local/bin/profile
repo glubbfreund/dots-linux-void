@@ -1,11 +1,34 @@
 #!/bin/bash
 # ~/.local/bin/profile
 
-rogMessage=$(rog-profile -n)
+USER=oli
+UID=$(id -u "$USER")
+
+DBUS_SESSION_BUS_ADDRESS=$(
+  tr '\000' '\n' < /proc/$(pgrep -u "$USER" xfce4-session | head -n1)/environ |
+  grep ^DBUS_SESSION_BUS_ADDRESS= |
+  cut -d= -f2-
+)
+
+case $1 in
+  "bal")
+      rogMessage=$(rog-profile -s balanced)
+      ;;
+  "qui")
+      rogMessage=$(rog-profile -s quiet)
+      ;;
+  "per")
+      rogMessage=$(rog-profile -s performance)
+      ;;
+  *)
+      rogMessage=$(rog-profile -n)
+      ;;
+esac
+
 rogCurrentMsg=$(rog-profile -g)
 currentProfile=$(echo $rogMessage | awk '{print $NF}')
 
-xfce4-panel --plugin-event=genmon-15:refresh:bool:true
+chpst -u "$USER" env DISPLAY=:0 XAUTHORITY=/home/$USER/.Xauthority DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" xfce4-panel --plugin-event=genmon-15:refresh:bool:true
 
 sleep 2 && [ "$(rog-profile -g)" == "$rogCurrentMsg" ] && notify-send -i indicator-sensors-fan \
 	    "Profil gewechselt" \
